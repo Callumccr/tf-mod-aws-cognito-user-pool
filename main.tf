@@ -23,7 +23,8 @@ resource "aws_cognito_user_pool" "default" {
       min_length = lookup(var.string_attribute_constraints, "min_length", "")
       max_length = lookup(var.string_attribute_constraints, "max_length", "")
     }
-  tags = module.label.tags
+    tags = module.label.tags
+  }
 }
 
 resource "aws_cognito_user_pool_client" "default" {
@@ -161,4 +162,3 @@ resource "aws_cognito_user_group" "default" {
 #     "unauthenticated" = aws_iam_role.unauthenticated.arn
 #   }
 # }
-
