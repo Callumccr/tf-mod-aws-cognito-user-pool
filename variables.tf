@@ -345,7 +345,7 @@ variable "user_group_description" {
 
 variable "explicit_auth_flows" {
   type        = list(string)
-  description = "(Optional) List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH)."
+  description = "(Optional) - List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH)."
   default     = ["USER_PASSWORD_AUTH"]
 }
 
