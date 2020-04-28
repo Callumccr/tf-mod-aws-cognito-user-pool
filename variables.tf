@@ -107,9 +107,9 @@ variable "mfa_configuration" {
 // schema nested {} - (Optional) - A container with the schema attributes of a user pool. Schema attributes from the standard attribute set only need to be specified if they are different from the default configuration. Maximum of 50 attributes.
 # NOTE: When defining an attribute_data_type of String or Number, the respective attribute constraints configuration block (e.g string_attribute_constraints or number_attribute_contraints) is required to prevent recreation of the Terraform resource. This requirement is true for both standard (e.g. name, email) and custom schema attributes.
 variable "attribute_data_type" {
-  type        = any
+  type        = string
   description = "(Optional) - The attribute data type. Must be one of Boolean, Number, String, DateTime."
-  default     = null
+  default     = ""
 }
 
 variable "developer_only_attribute" {
