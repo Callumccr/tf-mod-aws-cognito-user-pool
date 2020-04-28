@@ -21,7 +21,7 @@ resource "aws_cognito_user_pool" "default" {
     required                 = var.required
     string_attribute_constraints {
       min_length = lookup(var.string_attribute_constraints, "min_length", "")
-      min_length = lookup(var.string_attribute_constraints, "max_length", "")
+      max_length = lookup(var.string_attribute_constraints, "max_length", "")
     }
   tags = module.label.tags
 }
