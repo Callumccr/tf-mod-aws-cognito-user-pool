@@ -343,11 +343,12 @@ variable "user_group_description" {
 #   default     = false
 # }
 
-# variable "explicit_auth_flows" {
-#   type        = list(string)
-#   description = "(Optional) List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH)."
-#   default     = ["USER_PASSWORD_AUTH"]
-# }
+variable "explicit_auth_flows" {
+  type        = list(string)
+  description = "(Optional) List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH)."
+  default     = ["USER_PASSWORD_AUTH"]
+}
+
 # variable "auto_verified_attributes" {
 #   type        = list(string)
 #   description = "(Optional) The attributes to be auto-verified. Possible values: email, phone_number."
