@@ -38,25 +38,19 @@ variable "aws_assume_role_external_id" {
 
 // Conditional Triggers
 variable "enabled" {
-  description = "(Optional) - A Switch that decides whether to create the module. Default is true"
+  description = "(Optional) - A Switch that decides whether to create the module. Default is false"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_cognito_user_pool" {
-  description = "(Optional) - Whether to create the Cognito User Pool. Default is true"
+  description = "(Optional) - Whether to create the Cognito User Pool. Default is false"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_cognito_user_group" {
-  description = "(Optional) - Whether to create the Cognito User Pool. Default is true"
-  type        = bool
-  default     = true
-}
-
-variable "create_cognito_identity_pool" {
-  description = "(Optional) - Whether to create the Cognito Identity Pool. Default is false"
+  description = "(Optional) - Whether to create the Cognito User Pool. Default is false"
   type        = bool
   default     = false
 }
@@ -326,9 +320,9 @@ variable "user_group_description" {
 }
 
 variable "precedence" {
-  type        = string
-  description = "(Optional) - The precedence of the user group.."
-  default     = ""
+  type        = number
+  description = "(Optional) - The precedence of the user group."
+  default     = null
 }
 
 variable "role_arn" {

@@ -113,6 +113,7 @@ TO-DO
 | pre\_authentication | (Optional) - A pre-authentication AWS Lambda trigger. | `any` | n/a | yes |
 | pre\_sign\_up | (Optional) - A pre-registration AWS Lambda trigger. | `any` | n/a | yes |
 | pre\_token\_generation | (Optional) - Allow to customize identity token claims before token generation. | `any` | n/a | yes |
+| precedence | (Optional) - The precedence of the user group. | `number` | n/a | yes |
 | require\_lowercase | (Optional) - Whether you have required users to use at least one lowercase letter in their password. | `any` | n/a | yes |
 | require\_numbers | (Optional) - Whether you have required users to use at least one number in their password. | `any` | n/a | yes |
 | require\_symbols | (Optional) - Whether you have required users to use at least one symbol in their password. | `any` | n/a | yes |
@@ -131,9 +132,8 @@ TO-DO
 | aws\_assume\_role\_session\_name | (Optional) - The session name to use when making the AssumeRole call. | `string` | `""` | no |
 | aws\_region | The AWS region (e.g. ap-southeast-2). Autoloaded from region.tfvars. | `string` | `""` | no |
 | challenge\_required\_on\_new\_device | (Optional) - Indicates whether a challenge is required on a new device. Only applicable to a new device. | `string` | `""` | no |
-| create\_cognito\_identity\_pool | (Optional) - Whether to create the Cognito Identity Pool. Default is false | `bool` | `false` | no |
-| create\_cognito\_user\_group | (Optional) - Whether to create the Cognito User Pool. Default is true | `bool` | `true` | no |
-| create\_cognito\_user\_pool | (Optional) - Whether to create the Cognito User Pool. Default is true | `bool` | `true` | no |
+| create\_cognito\_user\_group | (Optional) - Whether to create the Cognito User Pool. Default is false | `bool` | `false` | no |
+| create\_cognito\_user\_pool | (Optional) - Whether to create the Cognito User Pool. Default is false | `bool` | `false` | no |
 | delimiter | (Optional) - Delimiter to be used between `namespace`, `environment`, `stage`, `name` and `attributes` | `string` | `"-"` | no |
 | developer\_only\_attribute | (Optional) - Specifies whether the attribute type is developer only. | `bool` | `false` | no |
 | device\_only\_remembered\_on\_user\_prompt | (Optional) - If true, a device is only remembered on user prompt. Default is false | `bool` | `false` | no |
@@ -141,7 +141,7 @@ TO-DO
 | email\_subject | (Optional) - The subject line for email messages. | `string` | `""` | no |
 | email\_verification\_message | (Optional) - A string representing the email verification message. Conflicts with verification\_message\_template configuration block email\_message argument. | `string` | `""` | no |
 | email\_verification\_subject | (Optional) - A string representing the email verification subject. Conflicts with verification\_message\_template configuration block email\_subject argument. | `string` | `""` | no |
-| enabled | (Optional) - A Switch that decides whether to create the module. Default is true | `bool` | `true` | no |
+| enabled | (Optional) - A Switch that decides whether to create the module. Default is false | `bool` | `false` | no |
 | environment | (Optional) - Environment, e.g. 'dev', 'qa', 'staging', 'prod' | `string` | `""` | no |
 | explicit\_auth\_flows | (Optional) - List of authentication flows (ADMIN\_NO\_SRP\_AUTH, CUSTOM\_AUTH\_FLOW\_ONLY, USER\_PASSWORD\_AUTH). | `list(string)` | <code><pre>[<br>  "USER_PASSWORD_AUTH"<br>]<br></pre></code> | no |
 | external\_id | The external ID used in IAM role trust relationships. For more information about using external IDs, see How to Use an External ID When Granting Access to Your AWS Resources to a Third Party. | `string` | `""` | no |
@@ -150,7 +150,6 @@ TO-DO
 | name | (Optional) - Solution name, e.g. 'vault', 'consul', 'keycloak', 'k8s', or 'baseline' | `string` | `""` | no |
 | namespace | (Optional) - Namespace, which could be your abbreviated product team, e.g. 'rci', 'mi', 'hp', or 'core' | `string` | `""` | no |
 | number\_attribute\_constraints | (Optional) - Specifies the minimum maximum length of an attribute value of the string type. | <code><pre>object({<br>    min_length = number<br>    max_length = number<br>  })<br></pre></code> | <code><pre>{<br>  "max_length": 10,<br>  "min_length": 0<br>}<br></pre></code> | no |
-| precedence | (Optional) - The precedence of the user group.. | `string` | `""` | no |
 | required | (Optional) - Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail. | `bool` | `true` | no |
 | role\_arn | (Optional) - The ARN of the IAM role to be associated with the user group. | `string` | `""` | no |
 | sms\_message | (Optional) - The message template for SMS messages. Must contain {username} and {####} placeholders, for username and temporary password, respectively. | `string` | `""` | no |
