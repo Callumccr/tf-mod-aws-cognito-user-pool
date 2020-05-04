@@ -5,11 +5,15 @@ resource "aws_cognito_user_pool" "default" {
   email_verification_subject = var.email_verification_subject
   email_verification_message = var.email_verification_message
 
-  admin_create_user_config {
-    invite_message_template {
-      email_message = var.email_message
-      email_subject = var.email_subject
-      sms_message   = var.sms_message
+  dynamic "admin_create_user_config" {
+    for_each = list(var.email_message) == [] ? [] : list(var.email_message)
+    iterator = invite_message_template
+    content {
+      invite_message_template {
+        email_message = var.email_message
+        email_subject = var.email_subject
+        sms_message   = var.sms_message
+      }
     }
   }
 
