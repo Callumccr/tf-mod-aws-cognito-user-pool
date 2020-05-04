@@ -17,15 +17,19 @@ resource "aws_cognito_user_pool" "default" {
     }
   }
 
-  schema {
-    attribute_data_type      = var.attribute_data_type
-    developer_only_attribute = var.developer_only_attribute
-    mutable                  = var.mutable
-    name                     = element(var.auto_verified_attributes, 0)
-    required                 = var.required
-    string_attribute_constraints {
-      min_length = lookup(var.string_attribute_constraints, "min_length", "")
-      max_length = lookup(var.string_attribute_constraints, "max_length", "")
+  dynamic "schema" {
+    for_each = list(var.attribute_data_type) == [] ? [] : list(var.attribute_data_type)
+    iterator = attribute_data_type
+    content {
+      attribute_data_type      = var.attribute_data_type
+      developer_only_attribute = var.developer_only_attribute
+      mutable                  = var.mutable
+      name                     = element(var.auto_verified_attributes, 0)
+      required                 = var.required
+      string_attribute_constraints {
+        min_length = lookup(var.string_attribute_constraints, "min_length", "")
+        max_length = lookup(var.string_attribute_constraints, "max_length", "")
+      }
     }
   }
   tags = module.label.tags
