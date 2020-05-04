@@ -113,7 +113,6 @@ TO-DO
 | pre\_authentication | (Optional) - A pre-authentication AWS Lambda trigger. | `any` | n/a | yes |
 | pre\_sign\_up | (Optional) - A pre-registration AWS Lambda trigger. | `any` | n/a | yes |
 | pre\_token\_generation | (Optional) - Allow to customize identity token claims before token generation. | `any` | n/a | yes |
-| precedence | (Optional) - The precedence of the user group. | `number` | n/a | yes |
 | require\_lowercase | (Optional) - Whether you have required users to use at least one lowercase letter in their password. | `any` | n/a | yes |
 | require\_numbers | (Optional) - Whether you have required users to use at least one number in their password. | `any` | n/a | yes |
 | require\_symbols | (Optional) - Whether you have required users to use at least one symbol in their password. | `any` | n/a | yes |
@@ -150,6 +149,7 @@ TO-DO
 | name | (Optional) - Solution name, e.g. 'vault', 'consul', 'keycloak', 'k8s', or 'baseline' | `string` | `""` | no |
 | namespace | (Optional) - Namespace, which could be your abbreviated product team, e.g. 'rci', 'mi', 'hp', or 'core' | `string` | `""` | no |
 | number\_attribute\_constraints | (Optional) - Specifies the minimum maximum length of an attribute value of the string type. | <code><pre>object({<br>    min_length = number<br>    max_length = number<br>  })<br></pre></code> | <code><pre>{<br>  "max_length": 10,<br>  "min_length": 0<br>}<br></pre></code> | no |
+| precedence | (Optional) - The precedence of the user group. | `number` | `0` | no |
 | required | (Optional) - Specifies whether a user pool attribute is required. If the attribute is required and the user does not provide a value, registration or sign-in will fail. | `bool` | `true` | no |
 | role\_arn | (Optional) - The ARN of the IAM role to be associated with the user group. | `string` | `""` | no |
 | sms\_message | (Optional) - The message template for SMS messages. Must contain {username} and {####} placeholders, for username and temporary password, respectively. | `string` | `""` | no |

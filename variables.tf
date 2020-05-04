@@ -322,7 +322,7 @@ variable "user_group_description" {
 variable "precedence" {
   type        = number
   description = "(Optional) - The precedence of the user group."
-  default     = null
+  default     = 0
 }
 
 variable "role_arn" {
