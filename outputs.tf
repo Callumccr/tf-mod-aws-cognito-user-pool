@@ -31,8 +31,3 @@ output "aws_cognito_user_group_name" {
   description = "The ids of the cognito user groups"
   value       = var.create_cognito_user_group == true ? aws_cognito_user_group.default.*.name : ""
 }
-
-output "aws_cognito_user_pool_client_id" {
-  description = "The ids of the cognito user pool client"
-  value       = var.create_cognito_user_group == true ? aws_cognito_user_pool_client.default.0.id : ""
-}
