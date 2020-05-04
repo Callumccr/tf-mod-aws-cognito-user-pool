@@ -33,7 +33,7 @@ variable "aws_assume_role_external_id" {
 }
 
 # -----------------------------------------------------------------------------
-# Variables: TF-MOD-AWS-COGNITO
+# Variables: TF-MOD-AWS-COGNITO-USER-POOL
 # -----------------------------------------------------------------------------
 
 // Conditional Triggers
@@ -313,12 +313,6 @@ variable "sns_caller_arn" {
 
 // Resource: aws_cognito_user_pool_group
 
-variable "website_endpoint" {
-  type        = string
-  description = "The website endpoint, if the bucket is configured with a website. If not, this will be an empty string."
-  default     = ""
-}
-
 variable "user_group_name" {
   type        = string
   description = "(Optional) - The name of the user group."
@@ -331,29 +325,25 @@ variable "user_group_description" {
   default     = ""
 }
 
-# variable "allow_unauthenticated_identities" {
-#   type        = bool
-#   description = "(Required) - Whether the identity pool supports unauthenticated logins or not."
-#   default     = false
-# }
+variable "precedence" {
+  type        = string
+  description = "(Optional) - The precedence of the user group.."
+  default     = ""
+}
 
-# variable "server_side_token_check" {
-#   type        = bool
-#   description = "(Optional) - Whether server-side token validation is enabled for the identity provider’s token or not."
-#   default     = false
-# }
+variable "role_arn" {
+  type        = string
+  description = "(Optional) - The ARN of the IAM role to be associated with the user group."
+  default     = ""
+}
+
+//Resource: aws_cognito_user_pool_client
 
 variable "explicit_auth_flows" {
   type        = list(string)
   description = "(Optional) - List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH)."
   default     = ["USER_PASSWORD_AUTH"]
 }
-
-# variable "auto_verified_attributes" {
-#   type        = list(string)
-#   description = "(Optional) The attributes to be auto-verified. Possible values: email, phone_number."
-#   default     = ["email"]
-# }
 
 # -----------------------------------------------------------------------------
 # Variables: TF-MOD-LABEL
