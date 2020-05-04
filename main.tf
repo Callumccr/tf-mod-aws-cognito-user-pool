@@ -46,7 +46,7 @@ resource "aws_cognito_user_pool_client" "default" {
 resource "aws_cognito_user_group" "default" {
   count        = var.enabled && var.create_cognito_user_group ? 1 : 0
   name         = var.user_group_name
-  user_pool_id = aws_cognito_user_pool.default.0.id == "" ? aws_cognito_user_pool.default.0.id : var.user_pool_id
+  user_pool_id = aws_cognito_user_pool.default.0.id = [] ? : [var.user_pool_id] ? aws_cognito_user_pool.default.0.id 
   description  = var.user_group_description
   precedence   = var.precedence
   role_arn     = var.role_arn
