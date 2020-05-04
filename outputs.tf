@@ -26,8 +26,3 @@ output "last_modified_date" {
   description = "The date the user pool was last modified."
   value       = var.create_cognito_user_pool == true ? aws_cognito_user_pool.default.0.endpoint : ""
 }
-
-output "aws_cognito_user_group_name" {
-  description = "The ids of the cognito user groups"
-  value       = var.create_cognito_user_group == true ? aws_cognito_user_group.default.0.name : ""
-}
