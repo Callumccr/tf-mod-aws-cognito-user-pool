@@ -309,7 +309,8 @@ variable "sns_caller_arn" {
 
 variable "user_group_name" {
   type        = string
-  description = "(Required) - The name of the user group."
+  description = "(Optional) - The name of the user group."
+  default     = ""
 }
 
 variable "user_group_description" {
@@ -332,7 +333,8 @@ variable "role_arn" {
 
 variable "user_pool_id" {
   type        = string
-  description = "(Required) - The user pool ID."
+  description = "(Optional) - The user pool ID."
+  default     = ""
 }
 
 //Resource: aws_cognito_user_pool_client
