@@ -29,5 +29,5 @@ output "last_modified_date" {
 
 output "aws_cognito_user_group_name" {
   description = "The ids of the cognito user groups"
-  value       = var.create_cognito_user_group == true ? aws_cognito_user_group.default.*.name : ""
+  value       = var.create_cognito_user_group == true ? aws_cognito_user_group.default.0.name : ""
 }
