@@ -33,30 +33,24 @@ variable "aws_assume_role_external_id" {
 }
 
 # -----------------------------------------------------------------------------
-# Variables: TF-MOD-AWS-COGNITO
+# Variables: TF-MOD-AWS-COGNITO-USER-POOL
 # -----------------------------------------------------------------------------
 
 // Conditional Triggers
 variable "enabled" {
-  description = "(Optional) - A Switch that decides whether to create the module. Default is true"
+  description = "(Optional) - A Switch that decides whether to create the module. Default is false"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_cognito_user_pool" {
-  description = "(Optional) - Whether to create the Cognito User Pool. Default is true"
+  description = "(Optional) - Whether to create the Cognito User Pool. Default is false"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "create_cognito_user_group" {
-  description = "(Optional) - Whether to create the Cognito User Pool. Default is true"
-  type        = bool
-  default     = true
-}
-
-variable "create_cognito_identity_pool" {
-  description = "(Optional) - Whether to create the Cognito Identity Pool. Default is false"
+  description = "(Optional) - Whether to create the Cognito User Pool. Default is false"
   type        = bool
   default     = false
 }
@@ -107,9 +101,9 @@ variable "mfa_configuration" {
 // schema nested {} - (Optional) - A container with the schema attributes of a user pool. Schema attributes from the standard attribute set only need to be specified if they are different from the default configuration. Maximum of 50 attributes.
 # NOTE: When defining an attribute_data_type of String or Number, the respective attribute constraints configuration block (e.g string_attribute_constraints or number_attribute_contraints) is required to prevent recreation of the Terraform resource. This requirement is true for both standard (e.g. name, email) and custom schema attributes.
 variable "attribute_data_type" {
-  type        = any
+  type        = string
   description = "(Optional) - The attribute data type. Must be one of Boolean, Number, String, DateTime."
-  default     = null
+  default     = ""
 }
 
 variable "developer_only_attribute" {
@@ -313,12 +307,6 @@ variable "sns_caller_arn" {
 
 // Resource: aws_cognito_user_pool_group
 
-variable "website_endpoint" {
-  type        = string
-  description = "The website endpoint, if the bucket is configured with a website. If not, this will be an empty string."
-  default     = ""
-}
-
 variable "user_group_name" {
   type        = string
   description = "(Optional) - The name of the user group."
@@ -331,28 +319,31 @@ variable "user_group_description" {
   default     = ""
 }
 
-# variable "allow_unauthenticated_identities" {
-#   type        = bool
-#   description = "(Required) - Whether the identity pool supports unauthenticated logins or not."
-#   default     = false
-# }
+variable "precedence" {
+  type        = number
+  description = "(Optional) - The precedence of the user group."
+  default     = 0
+}
 
-# variable "server_side_token_check" {
-#   type        = bool
-#   description = "(Optional) - Whether server-side token validation is enabled for the identity provider’s token or not."
-#   default     = false
-# }
+variable "role_arn" {
+  type        = string
+  description = "(Optional) - The ARN of the IAM role to be associated with the user group."
+  default     = ""
+}
 
-# variable "explicit_auth_flows" {
-#   type        = list(string)
-#   description = "(Optional) List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH)."
-#   default     = ["USER_PASSWORD_AUTH"]
-# }
-# variable "auto_verified_attributes" {
-#   type        = list(string)
-#   description = "(Optional) The attributes to be auto-verified. Possible values: email, phone_number."
-#   default     = ["email"]
-# }
+variable "user_pool_id" {
+  type        = string
+  description = "(Optional) - The user pool ID."
+  default     = ""
+}
+
+//Resource: aws_cognito_user_pool_client
+
+variable "explicit_auth_flows" {
+  type        = list(string)
+  description = "(Optional) - List of authentication flows (ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH)."
+  default     = ["USER_PASSWORD_AUTH"]
+}
 
 # -----------------------------------------------------------------------------
 # Variables: TF-MOD-LABEL
