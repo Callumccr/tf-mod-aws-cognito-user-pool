@@ -119,9 +119,7 @@ TO-DO
 | require\_uppercase | (Optional) - Whether you have required users to use at least one uppercase letter in their password. | `any` | n/a | yes |
 | scheme\_name | (Optional) - The name of the attribute. | `any` | n/a | yes |
 | temporary\_password\_validity\_days | (Optional) - (Optional) - In the password policy you have set, refers to the number of days a temporary password is valid. If the user does not sign-in during this time, their password will need to be reset by an administrator. | `any` | n/a | yes |
-| user\_group\_name | (Required) - The name of the user group. | `string` | n/a | yes |
 | user\_migration | (Optional) - The user migration Lambda config type. | `any` | n/a | yes |
-| user\_pool\_id | (Required) - The user pool ID. | `string` | n/a | yes |
 | verify\_auth\_challenge\_response | (Optional) - Verifies the authentication challenge response. | `any` | n/a | yes |
 | allow\_admin\_create\_user\_only | (Optional) - Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app. | `bool` | `true` | no |
 | attribute\_data\_type | (Optional) - The attribute data type. Must be one of Boolean, Number, String, DateTime. | `string` | `""` | no |
@@ -159,18 +157,20 @@ TO-DO
 | string\_attribute\_constraints | (Optional) - Specifies the minimum maximum length of an attribute value of the string type. | <code><pre>object({<br>    min_length = number<br>    max_length = number<br>  })<br></pre></code> | <code><pre>{<br>  "max_length": 32,<br>  "min_length": 6<br>}<br></pre></code> | no |
 | tags | (Optional) - Additional tags | `map(string)` | `{}` | no |
 | user\_group\_description | (Optional) - The description of the user group. | `string` | `""` | no |
+| user\_group\_name | (Optional) - The name of the user group. | `string` | `""` | no |
+| user\_pool\_id | (Optional) - The user pool ID. | `string` | `""` | no |
 | user\_pool\_name | (Optional) - The name of the user pool. | `string` | `""` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| aws\_cognito\_user\_group\_name | The ids of the cognito user groups |
-| cognito\_user\_pool\_arn | The ARN of the user pool |
-| cognito\_user\_pool\_endpoint | The endpoint name of the user pool. Example format: cognito-idp.REGION.amazonaws.com/xxxx\_yyyyy |
-| cognito\_user\_pool\_id | The id of the user pool |
+| client\_pool\_id | The id of the user pool client. |
 | creation\_date | The date the user pool was created. |
 | last\_modified\_date | The date the user pool was last modified. |
+| user\_pool\_arn | The ARN of the user pool |
+| user\_pool\_endpoint | The endpoint name of the user pool. Example format: cognito-idp.REGION.amazonaws.com/xxxx\_yyyyy |
+| user\_pool\_id | The id of the user pool |
 
 
 
